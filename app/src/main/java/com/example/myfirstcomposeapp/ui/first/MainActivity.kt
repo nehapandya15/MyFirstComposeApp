@@ -9,6 +9,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -76,7 +77,7 @@ fun MessageCard(msg: Message) {
 
         // surfaceColor will be updated gradually from one color to the other
         val surfaceColor by animateColorAsState(if (isExpanded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface)
-        Column {
+        Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
             Text(
                 text = msg.author,
                 color = MaterialTheme.colorScheme.secondary,
